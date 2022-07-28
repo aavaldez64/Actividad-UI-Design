@@ -23,13 +23,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#inicio">Inicio</a>
+                  <a id="navInicio" onclick="changeClass(btnInicio, btnDevs, btnGallery)" class="nav-link active" aria-current="page" href="#inicio">Inicio</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#devs">Desarrolladores</a>
+                  <a id="navDevs" onclick="changeClass(btnDevs, btnInicio, btnGallery)" class="nav-link" href="#devs">Desarrolladores</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#gallery">Galería</a>
+                  <a id="navGallery" onclick="changeClass(btnGallery, btnInicio, btnDevs)" class="nav-link" href="#gallery">Galería</a>
                 </li>
               </ul>
             </div>
@@ -42,9 +42,10 @@
                     <h1>Diseño de Interfaces de Usuario</h1>
                     <p>Página Web creada con:</p>
                     <ul>
-                      <li>HTML5</li>
-                      <li>CSS3</li>
+                      <li>HTML</li>
+                      <li>CSS</li>
                       <li>Bootstrap 5</li>
+                      <li>Javascript</li>
                     </ul>
                 </div>
                 <div class="image col-12 col-md-6 d-flex justify-content-center">
@@ -62,16 +63,16 @@
                     <span class="bg-purple"><a href="https://instagram.com/aavaldez64">@aavaldez64</a></span>
                     <span class="bg-blue2">Jr Dev</span>
                     <span class="bg-green">Músico</span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sodales aliquet enim, vel vulputate nisl bibendum non. Ut non neque vel metus placerat rhoncus et ut massa. Vestibulum semper ipsum ac feugiat tristique. Nam eget arcu tincidunt, consectetur libero a, cursus elit. Donec arcu odio, dictum quis tempus in, cursus ut lacus.</p>
+                    <p>Músico en el Sistema Nacional de Orquestas Juveniles e Infantiles de Venezuela (2016-2022). Estudiante de Programación, Junior Frontend Developer. Estudiante de Ingeniería en Computación, 10mo trimestre.<br>Le Gustan: Los gatos, la música y los dibujos de Carla.</p>
                 </div>
             </div>
             <div class="row perfil">
                 <div class="info col-12 col-md-8 order-2 order-md-1 text-center text-md-start">
                     <h2>Carla Rodríguez</h2>
                     <span class="bg-purple"><a href="https://instagram.com/carlart.3">@carlart.3</a></span>
-                    <span class="bg-dark-rose">Artista</span>
+                    <span class="bg-dark-rose">Bailaora</span>
                     <span class="bg-green">Cellista</span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sodales aliquet enim, vel vulputate nisl bibendum non. Ut non neque vel metus placerat rhoncus et ut massa. Vestibulum semper ipsum ac feugiat tristique. Nam eget arcu tincidunt, consectetur libero a, cursus elit. Donec arcu odio, dictum quis tempus in, cursus ut lacus.</p>
+                    <p>Cellista en el Sistema Nacional de Orquestas Juveniles e Infantiles de Venezuela desde el 2016. Bailarina flamenco o "Bailaora" desde los 8 años. Estudiante de Ingeniería en Computación, 10mo trimestre. Artista apasionada.<br>Le gustan: Los perritos, el Anime y las medias divertidas.</p>
                 </div>
                 <div class="col-12 col-md-4 order-1 order-md-2 d-flex justify-content-center">
                     <img src="./assets/img/developer_carla.jpg" alt="Carla Rodríguez">
@@ -128,6 +129,30 @@
         </div>
     </footer>
 
+    <script>
+      const btnInicio = document.querySelector('#navInicio'),
+            btnDevs = document.querySelector('#navDevs'),
+            btnGallery = document.querySelector('#navGallery');
+      
+      const changeClass = (a, b, c) => {
+        a.setAttribute('class', 'nav-link active');
+        b.setAttribute('class', 'nav-link');
+        c.setAttribute('class', 'nav-link');
+      }
+
+
+      window.onscroll = function() {scrollFunction()};
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 1100 || document.documentElement.scrollTop > 1100) {
+          changeClass(btnGallery, btnInicio, btnDevs);
+        } else if (document.body.scrollTop > 370 || document.documentElement.scrollTop > 370) {
+          changeClass(btnDevs, btnInicio, btnGallery);
+        } else {
+          changeClass(btnInicio, btnDevs, btnGallery);
+        }
+      }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
 </html>
